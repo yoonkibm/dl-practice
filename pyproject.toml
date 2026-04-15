@@ -1,0 +1,43 @@
+[build-system]
+requires = ["hatchling>=1.27.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "dl-practice"
+version = "0.1.0"
+description = "PyTorch-based vision framework practice project"
+readme = "README.md"
+requires-python = ">=3.11,<3.13"
+license = { text = "Proprietary" }
+authors = [
+  { name = "dl-practice contributors" }
+]
+dependencies = [
+  "torch>=2.8,<2.9",
+  "torchvision>=0.23,<0.24",
+  "einops>=0.8,<0.9",
+]
+
+[dependency-groups]
+dev = [
+  "pytest>=8.3,<9",
+  "ruff>=0.12,<0.13",
+  "mypy>=1.17,<1.18",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+ignore_missing_imports = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/dl_practice"]
